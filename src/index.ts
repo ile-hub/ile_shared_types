@@ -117,6 +117,28 @@ export interface PropertyFeedResponse {
 }
 
 // ---------------------------------------------------------------------------
+// GET /landlords/:id — renter-facing landlord profile
+// ---------------------------------------------------------------------------
+
+// Public fields only: no email, phone, company or verification status.
+// Only returned for a landlord with at least one published property.
+export interface LandlordPublicProperty {
+  id: string;
+  addressLine1: string;
+  city: string;
+  bedrooms: number;
+  rentAmount: number;
+}
+
+export interface LandlordPublicProfile {
+  id: string;
+  displayName: string;
+  memberSince: string;
+  // Published properties only, newest first.
+  properties: LandlordPublicProperty[];
+}
+
+// ---------------------------------------------------------------------------
 // Tenancy interests (mutual matching)
 // ---------------------------------------------------------------------------
 
